@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'com.adarshr.test-logger' version '2.0.0'
+    id 'org.springframework.boot' version '2.7.6'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group 'com.schoolofalgorithms'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //dependencies used for compiling purpose
+    //compileOnly 'org.projectlombok:lombok:1.18.24'
+
+    //dependencies used for execution purpose
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.13'
+    implementation 'org.springdoc:springdoc-openapi-webmvc-core:1.6.13'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    //dependencies used for testing purpose
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+}
+
+test {
+    useJUnitPlatform()
+
+    testlogger {
+        theme 'standard'
+        showExceptions true
+        showStackTraces true
+        showFullStackTraces false
+        showCauses true
+        slowThreshold 2000
+        showSummary true
+        showSimpleNames false
+        showPassed true
+        showSkipped true
+        showFailed true
+        showStandardStreams false
+        showPassedStandardStreams true
+        showSkippedStandardStreams true
+        showFailedStandardStreams true
+    }
+}
