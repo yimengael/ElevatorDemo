@@ -19,22 +19,6 @@ public class ElevatorController {
   private ElevatorService elevatorService;
 
   /**
-   * @param elevatorCarId Elevator car id.
-   */
-  @GetMapping("/allfloors")
-  public List<Floor> getAllFloorsServiced(@RequestParam(value = "elevatorCarId", defaultValue = "1") String elevatorCarId) {
-    return elevatorService.getAllFloorServiced(Integer.parseInt(elevatorCarId));
-  }
-
-  /**
-   * @param elevatorCarId Elevator car id.
-   */
-  @GetMapping("/nextfloor")
-  public Floor getNextFloorServiced(@RequestParam(value = "elevatorCarId", defaultValue = "1") String elevatorCarId) {
-    return elevatorService.getNextFloorServiced(Integer.parseInt(elevatorCarId));
-  }
-
-  /**
    * @param elevatorReq Elevator request.
    */
   @PostMapping("/callelevator")
@@ -48,5 +32,21 @@ public class ElevatorController {
   @PostMapping("/bringsomeone")
   public ElevatorCar bringSomeoneTo(@RequestBody ElevatorRequest elevatorReq) {
     return elevatorService.callElevatorCar(elevatorReq.getPersonFloor(), elevatorReq.getElevatorCarId());
+  }
+
+  /**
+   * @param elevatorCarId Elevator car id.
+   */
+  @GetMapping("/allfloors")
+  public List<Floor> getAllFloorsServiced(@RequestParam(value = "elevatorCarId", defaultValue = "1") String elevatorCarId) {
+    return elevatorService.getAllFloorServiced(Integer.parseInt(elevatorCarId));
+  }
+
+  /**
+   * @param elevatorCarId Elevator car id.
+   */
+  @GetMapping("/nextfloor")
+  public Floor getNextFloorServiced(@RequestParam(value = "elevatorCarId", defaultValue = "1") String elevatorCarId) {
+    return elevatorService.getNextFloorServiced(Integer.parseInt(elevatorCarId));
   }
 }
